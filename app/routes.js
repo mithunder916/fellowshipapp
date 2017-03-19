@@ -14,22 +14,22 @@ import Person from './components/Person'
 //     })
 // }
 
-let person = {};
+// let person = {};
 
-const retrievePerson = (nextState) => {
-  axios.get(`api/people/${nextState.params.id}`)
-    .then(res => {
-      person = res.data
-    })
-    .catch(err => console.error(err))
-}
+// const retrievePerson = (nextState) => {
+//   axios.get(`api/people/${nextState.params.id}`)
+//     .then(res => {
+//       person = res.data
+//     })
+//     .catch(err => console.error(err))
+// }
 
 export default () => (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRedirect to="/people" />
       <Route path="/people" component={Home} />
-      <Route path="/people/:id" component={Person} data={person} onEnter={retrievePerson} />
+      <IndexRedirect to="/people" />
+      <Route path="/people/:id" component={Home} />
     </Route>
   </Router>
 );

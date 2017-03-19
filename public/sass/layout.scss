@@ -16,43 +16,103 @@ html, body {
 }
 
 .peopleContainer {
-  display: flex;
-  justify-content: space-around;
+  // display: flex;
+  // justify-content: space-around;
+
 }
 .personContainer {
   display: inline-block;
-  border: dotted purple 1px;
-  padding: 1em;
-  box-shadow: .3em .3em 5px #888888;
-  border-radius: 5em;
-  background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);;
-  z-index: 100;
-  position: relative;
+  border: solid black 2px;
+  box-shadow: .3em .3em .25em darkslategrey;
+  border-radius: .2em;
+  vertical-align: top;
+  width: 25%;
+  margin: 1em 4.165%;
 
-  &:before {
-    border-radius: inherit;
-    background-image: linear-gradient(red, blue);
-    content: '';
+  span {
+    display: inline-block;
+    padding: 1em 2em;
+  }
+
+  .nameLink {
+    background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);;
+    z-index: 100;
+    position: relative;
+    text-align: center;
     display: block;
-    height: 100%;
-    position: absolute;
-    top: 0; left: 0;
-    opacity: 0;
-    width: 100%;
-    z-index: -100;
-    transition: opacity 0.45s;
+
+    &:before {
+      border-radius: inherit;
+      background-image: linear-gradient(red, blue);
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0; left: 0;
+      opacity: 0;
+      width: 100%;
+      z-index: -100;
+      transition: opacity 0.45s;
+    }
   }
 
   p{
     margin: 0;
   }
 }
-.personContainer:hover{
-  // padding: 2em;
-  background-color: #26F06D;
 
+.nameLink:active {
   &:before{
     opacity: 1;
   }
-  // transition-duration: 1s;
+}
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: .25em;
+  // text-align: center;
+  button {
+    margin: 0 .3em;
+    border-radius: .3em;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  // padding: .3em .5em;
+  // border: solid black;
+
+  input {
+    display: inline-block;
+    margin: .3em 0;
+  }
+
+  p {
+    margin: .3em 0;
+    text-align: center;
+  }
+}
+
+// .updatePerson {
+//   display: block;
+// }
+
+// .editFormContainer {
+//   display: block;
+// }
+
+#newPerson {
+  width: 20vw;
+  padding: .3em .5em;
+  margin: 5vh 40vw;
+  border-radius: .2em;
+}
+
+.submitButton {
+  // margin: 0 .3em;
+  border-radius: .3em;
+  width: 40%;
+  margin: .3em auto 0 auto;
 }

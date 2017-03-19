@@ -12,36 +12,67 @@ html, body {
   font-family: Helvetica;
   margin: 1.2em 0; }
 
-.peopleContainer {
-  display: flex;
-  justify-content: space-around; }
-
 .personContainer {
   display: inline-block;
-  border: dotted purple 1px;
-  padding: 1em;
-  box-shadow: .3em .3em 5px #888888;
-  border-radius: 5em;
-  background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);
-  z-index: 100;
-  position: relative; }
-  .personContainer:before {
-    border-radius: inherit;
-    background-image: linear-gradient(red, blue);
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    z-index: -100;
-    transition: opacity 0.45s; }
+  border: solid black 2px;
+  box-shadow: .3em .3em .25em darkslategrey;
+  border-radius: .2em;
+  vertical-align: top;
+  width: 25%;
+  margin: 1em 4.165%; }
+  .personContainer span {
+    display: inline-block;
+    padding: 1em 2em; }
+  .personContainer .nameLink {
+    background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);
+    z-index: 100;
+    position: relative;
+    text-align: center;
+    display: block; }
+    .personContainer .nameLink:before {
+      border-radius: inherit;
+      background-image: linear-gradient(red, blue);
+      content: '';
+      display: block;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      width: 100%;
+      z-index: -100;
+      transition: opacity 0.45s; }
   .personContainer p {
     margin: 0; }
 
-.personContainer:hover {
-  background-color: #26F06D; }
-  .personContainer:hover:before {
-    opacity: 1; }
+.nameLink:active:before {
+  opacity: 1; }
+
+.buttonRow {
+  display: flex;
+  justify-content: center;
+  margin-bottom: .25em; }
+  .buttonRow button {
+    margin: 0 .3em;
+    border-radius: .3em; }
+
+form {
+  display: flex;
+  flex-direction: column; }
+  form input {
+    display: inline-block;
+    margin: .3em 0; }
+  form p {
+    margin: .3em 0;
+    text-align: center; }
+
+#newPerson {
+  width: 20vw;
+  padding: .3em .5em;
+  margin: 5vh 40vw;
+  border-radius: .2em; }
+
+.submitButton {
+  border-radius: .3em;
+  width: 40%;
+  margin: .3em auto 0 auto; }

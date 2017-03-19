@@ -2,6 +2,7 @@
 
 const express = require('express');
 const morgan = require('morgan');
+const bodyParser = require('body-parser');
 const { resolve } = require('path');
 const models = require('./models');
 const Promise = require('bluebird');
@@ -10,6 +11,8 @@ const app = express();
 
 // logging middleware
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // serve static files from public
 app.use('/public', express.static('public'));
