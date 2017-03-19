@@ -17,5 +17,6 @@ const Person = db.define('person', {
 
 
 module.exports = {
-  Person: Person
+  Person: Person,
+  db
 }

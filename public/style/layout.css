@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 20px; }
+
+html, body {
+  background-color: #1DB954; }
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  font-family: Helvetica;
+  margin: 1.2em 0; }
+
+.peopleContainer {
+  display: flex;
+  justify-content: space-around; }
+
+.personContainer {
+  display: inline-block;
+  border: dotted purple 1px;
+  padding: 1em;
+  box-shadow: .3em .3em 5px #888888;
+  border-radius: 5em;
+  background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);
+  z-index: 100;
+  position: relative; }
+  .personContainer:before {
+    border-radius: inherit;
+    background-image: linear-gradient(red, blue);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: opacity 0.45s; }
+  .personContainer p {
+    margin: 0; }
+
+.personContainer:hover {
+  background-color: #26F06D; }
+  .personContainer:hover:before {
+    opacity: 1; }
