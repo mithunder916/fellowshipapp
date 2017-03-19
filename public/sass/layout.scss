@@ -15,11 +15,6 @@ html, body {
   margin: 1.2em 0;
 }
 
-.peopleContainer {
-  // display: flex;
-  // justify-content: space-around;
-
-}
 .personContainer {
   display: inline-block;
   border: solid black 2px;
@@ -96,8 +91,6 @@ a {
 form {
   display: flex;
   flex-direction: column;
-  // padding: .3em .5em;
-  // border: solid black;
 
   input {
     display: inline-block;
@@ -119,7 +112,6 @@ form {
 }
 
 .submitButton {
-  // margin: 0 .3em;
   border-radius: .3em;
   width: 40%;
   margin: 0 auto .5em auto;
