@@ -30,7 +30,7 @@ app.use(function (err, req, res, next) {
 
 // server listening!
 Promise.all([
-    models.Person.sync({})
+    models.Person.sync({force: true})
   ])
   .then(() => {
     app.listen((process.env.PORT || 3000), () => {
