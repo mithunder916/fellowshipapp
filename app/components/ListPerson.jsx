@@ -18,7 +18,7 @@ export class ListPerson extends Component {
         </div>
         <div className='buttonRow'>
           <button onClick={(e) => toggleUpdateForm(e)}>EDIT</button>
-          <button onClick={() => deletePerson(person.id)}>DELETE</button>
+          <button onClick={() => deletePerson(person.id)}><Link to={`/people`}>DELETE</Link></button>
         </div>
         <form
         style={{display: 'none'}}

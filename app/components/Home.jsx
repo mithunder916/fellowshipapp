@@ -71,7 +71,7 @@ export default class Home extends Component {
 
     axios.delete(path)
       .then(() => {
-          this.fetchAllPeople();
+        this.fetchAllPeople();
       })
       .catch(err => console.error(err));
   }
@@ -94,11 +94,8 @@ export default class Home extends Component {
       .catch(err => console.error(err));
   }
 
-
-// separate map return into Person component and render multiple of those?
   render() {
     const { people, singleId } = this.state;
-    // console.log('render', people, this.state.singleId)
     return (
       <div>
         <div className='title'>People</div>
