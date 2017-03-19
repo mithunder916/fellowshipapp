@@ -59,6 +59,8 @@ export default class Home extends Component {
       .then(res => {
         if (path === 'api/people') {
           this.setState({people: [...this.state.people, res.data]})
+          // unnecessary because of React; used only to make the GET request show up in Chrome's network tab
+          this.fetchAllPeople()
         }
       })
       .catch(err => console.error(err));
@@ -81,10 +83,11 @@ export default class Home extends Component {
 
   updateForm(event, id, city){
     event.preventDefault();
-    let path = this.state.singleId ? `../api/people/${id}` : `api/people/${id}`;
-    axios.put(path, {favoriteCity: city})
+    let path = this.state.singleId ? `../api/people` : `api/people`;
+
+    axios.put(path, {personId: id, favoriteCity: city})
       .then((res) => {
-        if (path === `api/people/${id}`){
+        if (path === `api/people`){
           this.fetchAllPeople();
         } else this.fetchOnePerson(id);
       })
@@ -94,7 +97,7 @@ export default class Home extends Component {
 
 // separate map return into Person component and render multiple of those?
   render() {
-    const { people } = this.state;
+    const { people, singleId } = this.state;
     // console.log('render', people, this.state.singleId)
     return (
       <div>
@@ -112,15 +115,17 @@ export default class Home extends Component {
             )
           })}
         </div>
-        {people.length < 2 ? <div><button
+        {singleId ?
+        <div className='backContainer'><button
         className='backButton'
-        onClick={() => this.fetchAllPeople()}><Link to={`/people`}>Back to Home</Link></button></div> : null}
+        onClick={() => this.fetchAllPeople()}><Link to={`/people`}>Back to Home</Link></button></div>
+        :
         <form id='newPerson' onSubmit={(e) => this.submitNewPerson(e)}>
           <p>Create New Person:</p>
           <input type="text" name='name' defaultValue='Sean' />
           <input type="text" name='favoriteCity' defaultValue='New York' />
           <input className='submitButton' type="submit"/>
-        </form>
+        </form>}
       </div>
     )
   }

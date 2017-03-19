@@ -34,16 +34,27 @@ router.post('/', (req, res, next) => {
   .catch(next)
 })
 
-router.put('/:id', (req, res, next) => {
-  Person.update(req.body, {
-    where: {
-      id: req.params.id
-    },
-    returning: true
+router.put('/', (req, res, next) => {
+  Person.findById(req.body.personId)
+    .then(person => {
+      person.update(req.body, {
+      returning: true
+    })
   })
   .then(person => res.send(person))
   .catch(next)
 })
+
+// router.put('/:id', (req, res, next) => {
+//   Person.update(req.body, {
+//     where: {
+//       id: req.params.id
+//     },
+//     returning: true
+//   })
+//   .then(person => res.send(person))
+//   .catch(next)
+// })
 
 router.delete('/:id', (req, res, next) => {
   Person.destroy({

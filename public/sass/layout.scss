@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: monospace;
   font-size: 20px;
 }
 
@@ -10,8 +10,8 @@ html, body {
 
 .title {
   text-align: center;
-  font-size: 28px;
-  font-family: Helvetica;
+  font-size: 32px;
+  // font-family: Helvetica;
   margin: 1.2em 0;
 }
 
@@ -28,14 +28,16 @@ html, body {
   vertical-align: top;
   width: 25%;
   margin: 1em 4.165%;
+  background-color: #25CFBC;
 
   span {
-    display: inline-block;
+    display: block;
     padding: 1em 2em;
+    text-align: center;
   }
 
   .nameLink {
-    background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);;
+    background-image: linear-gradient(to left top, #1DB954, #26F06D);
     z-index: 100;
     position: relative;
     text-align: center;
@@ -43,7 +45,7 @@ html, body {
 
     &:before {
       border-radius: inherit;
-      background-image: linear-gradient(to right bottom, green, blue);
+      background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);
       content: '';
       display: block;
       height: 100%;
@@ -71,21 +73,23 @@ html, body {
   display: flex;
   justify-content: center;
   margin-bottom: .25em;
-  // text-align: center;
   button {
     margin: 0 .3em;
     border-radius: .3em;
   }
 }
 
+
+
 .backButton {
   margin: 0 auto;
+  display: block;
   border-radius: .3em;
   text-align: center;
 }
 
 a {
-  // text-decoration: none;
+  text-decoration: none;
   color: black;
 }
 
@@ -97,6 +101,7 @@ form {
 
   input {
     display: inline-block;
+    width: 100%;
     margin: .3em 0;
   }
 
@@ -105,14 +110,6 @@ form {
     text-align: center;
   }
 }
-
-// .updatePerson {
-//   display: block;
-// }
-
-// .editFormContainer {
-//   display: block;
-// }
 
 #newPerson {
   width: 20vw;
@@ -125,5 +122,5 @@ form {
   // margin: 0 .3em;
   border-radius: .3em;
   width: 40%;
-  margin: .3em auto 0 auto;
+  margin: 0 auto .5em auto;
 }

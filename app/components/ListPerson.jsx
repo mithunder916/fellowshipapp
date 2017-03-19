@@ -11,10 +11,8 @@ export class ListPerson extends Component {
     return (
       <div
       className='personContainer'>
-        <div className='nameLink'>
-          <Link to={`/people/${person.id}`} onClick={() => fetchOnePerson(person.id)}>{person.name}</Link>
-        </div>
-        <span>Favorite City: {person.favoriteCity}</span>
+          <Link to={`/people/${person.id}`} onClick={() => fetchOnePerson(person.id)}><div className='nameLink'>{person.name}</div></Link>
+        <span>City: {person.favoriteCity}</span>
         <div className='imageContainer'>
 
         </div>
@@ -26,8 +24,8 @@ export class ListPerson extends Component {
         style={{display: 'none'}}
         className='updatePerson'
         onSubmit={(e) => updateForm(e, person.id, e.target.city.value)}>
-          <input type='text' name='city' defaultValue='Brooklyn' />
-          <input className='submitButton' type='submit' value='Update' />
+          <span>New City:<input type='text' name='city' defaultValue='Brooklyn' /></span>
+          <input className='submitButton' type='submit' value='UPDATE' />
         </form>
       </div>
     )

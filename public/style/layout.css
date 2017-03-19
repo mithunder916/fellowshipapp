@@ -1,6 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: monospace;
   font-size: 20px; }
 
 html, body {
@@ -8,8 +8,7 @@ html, body {
 
 .title {
   text-align: center;
-  font-size: 28px;
-  font-family: Helvetica;
+  font-size: 32px;
   margin: 1.2em 0; }
 
 .personContainer {
@@ -19,19 +18,21 @@ html, body {
   border-radius: .2em;
   vertical-align: top;
   width: 25%;
-  margin: 1em 4.165%; }
+  margin: 1em 4.165%;
+  background-color: #25CFBC; }
   .personContainer span {
-    display: inline-block;
-    padding: 1em 2em; }
+    display: block;
+    padding: 1em 2em;
+    text-align: center; }
   .personContainer .nameLink {
-    background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);
+    background-image: linear-gradient(to left top, #1DB954, #26F06D);
     z-index: 100;
     position: relative;
     text-align: center;
     display: block; }
     .personContainer .nameLink:before {
       border-radius: inherit;
-      background-image: linear-gradient(to right bottom, green, blue);
+      background-image: linear-gradient(to right bottom, #1DB954, #26F06D, #A7F06D, #E5F06D);
       content: '';
       display: block;
       height: 100%;
@@ -58,10 +59,12 @@ html, body {
 
 .backButton {
   margin: 0 auto;
+  display: block;
   border-radius: .3em;
   text-align: center; }
 
 a {
+  text-decoration: none;
   color: black; }
 
 form {
@@ -69,6 +72,7 @@ form {
   flex-direction: column; }
   form input {
     display: inline-block;
+    width: 100%;
     margin: .3em 0; }
   form p {
     margin: .3em 0;
@@ -83,4 +87,4 @@ form {
 .submitButton {
   border-radius: .3em;
   width: 40%;
-  margin: .3em auto 0 auto; }
+  margin: 0 auto .5em auto; }
