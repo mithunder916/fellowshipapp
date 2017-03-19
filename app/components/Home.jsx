@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router';
+import {Link, browserHistory } from 'react-router';
 import { ListPerson } from './ListPerson';
 
 // The Home component might contain your homepage content. Adding new routes to routes.js will cause them to be rendered instead when those urls are accessed.
@@ -20,22 +20,23 @@ export default class Home extends Component {
   }
 
   componentWillMount(){
-    let personId = window.location.pathname.split('/')[2];
+    let personId = this.state.singleId;
     if (!personId) this.fetchAllPeople();
     else this.fetchOnePerson(personId);
   }
 
   fetchAllPeople(){
-    axios.get('api/people')
+    let path = (this.state.singleId) ? '../api/people' : '/api/people';
+    // resets single id
+    axios.get(path)
       .then(res => {
-        this.setState({people: res.data})
+        this.setState({people: res.data, singleId: undefined})
       })
       .catch(err => console.error(err));
   }
 
   fetchOnePerson(id){
     this.setState({singleId: id})
-    console.log('FETCH ONE')
     axios.get(`../api/people/${id}`)
       .then(res => {
         this.setState({people: [res.data]})
@@ -50,7 +51,7 @@ export default class Home extends Component {
       name: event.target.name.value,
       favoriteCity: event.target.favoriteCity.value
     },
-        personId = window.location.pathname.split('/')[2],
+        personId = this.state.singleId,
         path = personId ? '../api/people' : 'api/people';
 
     // only updates state/view if on /people page
@@ -64,9 +65,11 @@ export default class Home extends Component {
   }
 
   deletePerson(id){
-    axios.delete(`api/people/${id}`)
+    let path = this.state.singleId ? `../api/people/${id}` : `api/people/${id}`;
+
+    axios.delete(path)
       .then(() => {
-        this.fetchAllPeople();
+          this.fetchAllPeople();
       })
       .catch(err => console.error(err));
   }
@@ -78,9 +81,12 @@ export default class Home extends Component {
 
   updateForm(event, id, city){
     event.preventDefault();
-    axios.put(`api/people/${id}`, {favoriteCity: city})
+    let path = this.state.singleId ? `../api/people/${id}` : `api/people/${id}`;
+    axios.put(path, {favoriteCity: city})
       .then((res) => {
-        this.fetchAllPeople();
+        if (path === `api/people/${id}`){
+          this.fetchAllPeople();
+        } else this.fetchOnePerson(id);
       })
       .catch(err => console.error(err));
   }
@@ -89,7 +95,7 @@ export default class Home extends Component {
 // separate map return into Person component and render multiple of those?
   render() {
     const { people } = this.state;
-    console.log(this.state.singleId)
+    // console.log('render', people, this.state.singleId)
     return (
       <div>
         <div className='title'>People</div>
@@ -106,6 +112,9 @@ export default class Home extends Component {
             )
           })}
         </div>
+        {people.length < 2 ? <div><button
+        className='backButton'
+        onClick={() => this.fetchAllPeople()}><Link to={`/people`}>Back to Home</Link></button></div> : null}
         <form id='newPerson' onSubmit={(e) => this.submitNewPerson(e)}>
           <p>Create New Person:</p>
           <input type="text" name='name' defaultValue='Sean' />

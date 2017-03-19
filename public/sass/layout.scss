@@ -43,7 +43,7 @@ html, body {
 
     &:before {
       border-radius: inherit;
-      background-image: linear-gradient(red, blue);
+      background-image: linear-gradient(to right bottom, green, blue);
       content: '';
       display: block;
       height: 100%;
@@ -52,7 +52,7 @@ html, body {
       opacity: 0;
       width: 100%;
       z-index: -100;
-      transition: opacity 0.45s;
+      transition: opacity 0.25s;
     }
   }
 
@@ -61,7 +61,7 @@ html, body {
   }
 }
 
-.nameLink:active {
+.nameLink:hover {
   &:before{
     opacity: 1;
   }
@@ -76,6 +76,17 @@ html, body {
     margin: 0 .3em;
     border-radius: .3em;
   }
+}
+
+.backButton {
+  margin: 0 auto;
+  border-radius: .3em;
+  text-align: center;
+}
+
+a {
+  // text-decoration: none;
+  color: black;
 }
 
 form {

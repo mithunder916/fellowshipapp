@@ -31,7 +31,7 @@ html, body {
     display: block; }
     .personContainer .nameLink:before {
       border-radius: inherit;
-      background-image: linear-gradient(red, blue);
+      background-image: linear-gradient(to right bottom, green, blue);
       content: '';
       display: block;
       height: 100%;
@@ -41,11 +41,11 @@ html, body {
       opacity: 0;
       width: 100%;
       z-index: -100;
-      transition: opacity 0.45s; }
+      transition: opacity 0.25s; }
   .personContainer p {
     margin: 0; }
 
-.nameLink:active:before {
+.nameLink:hover:before {
   opacity: 1; }
 
 .buttonRow {
@@ -55,6 +55,14 @@ html, body {
   .buttonRow button {
     margin: 0 .3em;
     border-radius: .3em; }
+
+.backButton {
+  margin: 0 auto;
+  border-radius: .3em;
+  text-align: center; }
+
+a {
+  color: black; }
 
 form {
   display: flex;
