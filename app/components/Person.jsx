@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// refactoring for single person
 export default class Person extends Component {
   constructor(props) {
     super(props);

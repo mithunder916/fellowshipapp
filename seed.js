@@ -6,8 +6,6 @@ const seedPeople = () => db.Promise.map([
   {name: 'Sean', favoriteCity: 'Brooklyn'}
 ], person => db.model('person').create(person))
 
-// db.didSync
-//   .then(() =>
 db.sync({force: true})
   .then(seedPeople)
   .then(console.log('Seeded people OK'))

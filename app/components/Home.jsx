@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link, browserHistory } from 'react-router';
-import { ListPerson } from './ListPerson';
+import {Link} from 'react-router';
+import ListPerson from './ListPerson';
 
-// The Home component might contain your homepage content. Adding new routes to routes.js will cause them to be rendered instead when those urls are accessed.
+// REFACTOR: instead of using conditional logic to change what this component renders, and having state change based on the URL, I should make another component to display a single person, and simply update React Router to render that component when /peope/:id is accessed
 
 export default class Home extends Component {
   constructor(props) {
@@ -25,6 +25,7 @@ export default class Home extends Component {
     else this.fetchOnePerson(personId);
   }
 
+  // GET requests
   fetchAllPeople(){
     let path = (this.state.singleId) ? '../api/people' : '/api/people';
     // resets single id
@@ -43,7 +44,7 @@ export default class Home extends Component {
       })
       .catch(err => console.error(err));
   }
-
+  // POST request
   submitNewPerson(event){
     event.preventDefault();
 
@@ -65,7 +66,7 @@ export default class Home extends Component {
       })
       .catch(err => console.error(err));
   }
-
+  // DELETE request
   deletePerson(id){
     let path = this.state.singleId ? `../api/people/${id}` : `api/people/${id}`;
 
@@ -81,6 +82,7 @@ export default class Home extends Component {
     updateForm.style.display = updateForm.style.display === 'none' ? 'flex' : 'none';
   }
 
+  // PUT request
   updateForm(event, id, city){
     event.preventDefault();
     let path = this.state.singleId ? `../api/people` : `api/people`;
@@ -94,6 +96,7 @@ export default class Home extends Component {
       .catch(err => console.error(err));
   }
 
+  // renders Back button if single id is show, renders 'Create New Person' form if all people are shown
   render() {
     const { people, singleId } = this.state;
     return (
